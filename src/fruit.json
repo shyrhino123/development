@@ -1,0 +1,99 @@
+[
+    {
+      "name": "Strawberries",
+      "popularity": 1,
+      "season": "summer",
+      "price": 7.99,
+      "type": "berry",
+      "image": "https://i.pinimg.com/474x/3c/e6/81/3ce6812fc4e7e730ba7544af78aff465.jpg"
+    },
+    {
+      "name": "Blueberries",
+      "popularity": 1,
+      "season": "summer",
+      "type": "berry",
+      "price": 4.99,
+      "image": "https://i.pinimg.com/474x/b5/ac/eb/b5aceb5ed08466ed1a3898aeef8aa634.jpg"
+    },
+    {
+      "name": "Cherries",
+      "popularity": 1,
+      "season": "summer",
+      "type": "berry",
+      "price": 4.99,
+      "image": "https://i.pinimg.com/474x/cc/f2/a6/ccf2a62d89c0bc33880e119c9f576a17.jpg"
+    },
+    {
+      "name": "Apples",
+      "popularity": 1,
+      "season": "summer",
+      "type": "other",
+      "price": 4.99,
+      "image": "https://i.pinimg.com/474x/49/a2/e0/49a2e042efab81cf13780fda7d1a84b4.jpg"
+    },
+    {
+      "name": "Persimmon",
+      "popularity": 1,
+      "season": "summer",
+      "type": "berry",
+      "price": 4.99,
+      "image": "https://i.pinimg.com/474x/9b/36/23/9b3623915b76ac44081cf0aa4d3f149c.jpg"
+    },
+    {
+      "name": "Green Grapes",
+      "popularity": 1,
+      "season": "fall",
+      "type": "berry",
+      "price": 4.99,
+      "image": "https://i.pinimg.com/474x/82/90/ac/8290ac4c2cb5c7e1fb624fb254d6e549.jpg"
+    },
+    {
+      "name": "Watermelon",
+      "popularity": 1,
+      "season": "summer",
+      "type": "other",
+      "price": 4.99,
+      "image": "https://i.pinimg.com/474x/49/0f/1f/490f1ff215b2781088087f8bff30a0f7.jpg"
+    },
+    {
+      "name": "Blackberries",
+      "popularity": 1,
+      "season": "summer",
+      "type": "berry",
+      "price": 4.99,
+      "image": "https://i.pinimg.com/474x/fe/68/b7/fe68b7439dbaf2197a57b59b94f77ccf.jpg"
+    },
+    {
+      "name": "Peaches",
+      "popularity": 1,
+      "season": "summer",
+      "type": "other",
+      "price": 4.99,
+      "image": "https://i.pinimg.com/474x/f9/0c/88/f90c8853af89bcaf9b8d070317a999b0.jpg"
+    },
+    {
+      "name": "Oranges",
+      "popularity": 1,
+      "season": "summer",
+      "type": "tropical",
+      "price": 4.99,
+      "image": "https://i.pinimg.com/474x/b8/07/54/b8075493ab6e35538571a9312bde2a80.jpg"
+    },
+    {
+      "name": "Mango",
+      "popularity": 1,
+      "season": "summer",
+      "type": "tropical",
+      "price": 4.99,
+      "image": "https://i.pinimg.com/474x/18/fc/ae/18fcae75abf011baf795754260e9bb65.jpg"
+    },
+    {
+      "name": "Pears",
+      "popularity": 1,
+      "season": "summer",
+      "type": "other",
+      "price": 4.99,
+      "image": "https://i.pinimg.com/474x/3b/b1/fb/3bb1fb3211295388843b9bf866fe2397.jpg"
+    }
+  ]
+  
