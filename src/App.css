@@ -29,4 +29,22 @@
   position: fixed;
   top: 20px;
   right: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+
+#body{
+  display: flex;
+  width: 80%;
+  padding-left: 20px;
+}
+#filters{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
