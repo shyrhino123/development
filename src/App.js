@@ -92,6 +92,18 @@ function App() {
     console.log(sortBy)
     return sorted;
   }
+
+  const addToCart = (item) => {
+    if (cart.has(item.name)) {
+      cart.delete(item.name)
+      setTotal(cartTotal - item.price);
+    }
+    else {
+      setCart(cart.set(item.name, item.price));
+      setTotal(cartTotal + item.price); 
+    }
+    console.log(cart)
+    };
   
   const fruits = filteredFruits && filteredFruits.map((item) => (
     <Card
@@ -116,18 +128,6 @@ function App() {
     <Button onClick={() => addToCart(item)}>Add or Remove</Button>
     </Card>
     ));
-
-  const addToCart = (item) => {
-    if (cart.has(item.name)) {
-      cart.delete(item.name)
-      setTotal(cartTotal - item.price);
-    }
-    else {
-      setCart(cart.set(item.name, item.price));
-      setTotal(cartTotal + item.price); 
-    }
-    console.log(cart)
-    };
 
 
   return (
