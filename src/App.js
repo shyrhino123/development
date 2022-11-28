@@ -3,18 +3,28 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import { Card, Space, Button } from 'antd';
 import fruitsData from "./fruit.json";
-import { Checkbox, Radio} from 'antd';
 
-const onChange = (checkedValues) => {
-  console.log('checked = ', checkedValues);
-};
 const { Meta } = Card;
 function App() {
-  const[cart, setCart] = useState(new Map()); 
-  const[cartTotal, setTotal] = useState(0);
   const season = ["All", "summer", "fall", "winter", "spring"];
   const type = ["All", "berry", "tropical", "other"];
   const sort = ["Default", "Price"];
+
+  const [cart, setCart] = useState(new Map()); 
+  const [cartTotal, setTotal] = useState(0);
+  const [filterBySeason, setSeasonFilter] = useState(null)
+  const [filterByType, setTypeFilter] = useState(null)
+  const [sortBy, setSort] = useState(null)
+  const [filteredFruits, setFilters] = useState(getFruits());
+
+  useEffect(() => {
+    const fruitsSorted = returnSorted(getFruits())
+    const seasonFiltered = returnSeasonFiltered(fruitsSorted);
+    const typeFiltered = returnTypeFiltered(seasonFiltered);
+    setFilters(typeFiltered)
+  }, [filterBySeason, filterByType, sortBy]);
+
+  //helper functions
   function getFruits() {
     const fruitsList = fruitsData;
     return fruitsList;
@@ -30,16 +40,7 @@ function App() {
     return filteredFruits;
   }
 
-
-  const [filterBySeason, setSeasonFilter] = useState(null)
-  const [filterByType, setTypeFilter] = useState(null)
-  const [filteredFruits, setFilters] = useState(getFruits());
-  useEffect(() => {
-    const seasonFiltered = returnSeasonFiltered(getFruits());
-    const typeFiltered = returnTypeFiltered(seasonFiltered);
-    setFilters(typeFiltered)
-  }, [filterBySeason, filterByType]);
-
+  //interactive functions
   function handleSeasons(e) {
     let typeSeason = e.target.value;
     setSeasonFilter(typeSeason);
@@ -47,6 +48,11 @@ function App() {
   function handleType(e) {
     let type = e.target.value;
     setTypeFilter(type);
+  }
+  function handleSort(e) {
+    let sort = e.target.value;
+    setSort(sort);
+    console.log(sort);
   }
 
   function returnSeasonFiltered(fruits) {
@@ -73,36 +79,19 @@ function App() {
       console.log(filtered)
       return filtered;
   }
-
-  // const [filterBySeason, setSeasonFilter] = useState(null)
-  // const [filterByType, setTypeFilter] = useState(null)
-  // useEffect(() => {
-  //   setSeasonFilter(getFruits());
-  // }, []);
-  // useEffect(() => {
-  //   setTypeFilter(getFruits());
-  // }, []);
-
-  // function handleSeasons(e) {
-  //   let typeSeason = e.target.value;
-  //   console.log(typeSeason)
-  //   typeSeason !== "All"
-  //     ? setSeasonFilter(filterSeason(typeSeason))
-  //     : setSeasonFilter(getFruits());
-  //   console.log(filterBySeason)
-  //   return filterBySeason;
-  // }
-
-  // function handleType(e) {
-  //   let type = e.target.value;
-  //   console.log(type)
-  //   type !== "All"
-  //     ? setTypeFilter(filterType(type))
-  //     : setTypeFilter(getFruits());
-  //   console.log(filterByType)
-  //   return filterByType;
-  // }
-
+  function returnSorted(fruits) {
+    let sorted = [];
+    if (sortBy == null) {
+      return getFruits();
+    }
+    sortBy !== "Default"
+        ? sorted = [...fruits].sort((a, b) => {
+          return a.price - b.price ;
+        })
+        : sorted = getFruits();
+    console.log(sortBy)
+    return sorted;
+  }
   
   const fruits = filteredFruits && filteredFruits.map((item) => (
     <Card
@@ -121,7 +110,7 @@ function App() {
     <Meta
       title={item.name}
     />
-    <p>Price: {item.price} </p>
+    <p>Price: ${item.price} </p>
     <p>Season: {item.season} </p> 
     <p>Type: {item.type} </p> 
     <Button onClick={() => addToCart(item)}>Add or Remove</Button>
@@ -140,12 +129,6 @@ function App() {
     console.log(cart)
     };
 
-    const [value, setValue] = useState(1);
-    const onChange = (e) => {
-      console.log('radio checked', e.target.value);
-      setValue(e.target.value);
-    };
-
 
   return (
     <div className="App">
@@ -160,7 +143,7 @@ function App() {
           sort.map((s, index) => (
             <div>
               <div>
-              <input type="radio" id={s} name="sort" value={s} onClick={handleType}/>
+              <input type="radio" id={s} name="sort" value={s} onClick={handleSort}/>
               <label for={s}>{s}</label>
             </div>
             </div>
@@ -195,9 +178,9 @@ function App() {
       <div id="cart">
         <h2>Cart</h2>
         {
-          Array.from(cart, ([item, count]) => <p>{count} x {item}</p>)
+          Array.from(cart, ([item, count]) => <p>{item} --- ${count}</p>)
         }
-        Total: {cartTotal}
+        Total Price: ${cartTotal}
       </div>
     </div>
   );
